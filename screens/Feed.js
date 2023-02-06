@@ -6,9 +6,9 @@ import StoryCard from "./StoryCard";
 import { RFValue } from "react-native-responsive-fontsize";
 SplashScreen.preventAutoHideAsync();
 let customFonts={
-"Bubblegum-Sans":require("../assets/fonts/BubllegumSans-Regular.ttf")
+"Bubblegum-Sans":require("../assets/fonts/BubblegumSans-Regular.ttf")
 }
-let stories=requiere("./temp.json")
+let stories=require("./temp.json")
 export default class Feed extends Component{
 constructor(props){
 super(props);
@@ -23,7 +23,7 @@ componentDidMount(){
 this._loadFontsAsync();
 }
 renderItem = ({ item: story }) => {
-return <StoryCard story={story} />;
+return <StoryCard story={story} navigation={this.props.navigation}/>;
 };
 keyExtractor = (item, index) => index.toString();
 render(){
@@ -81,10 +81,11 @@ const styles = StyleSheet.create({
     },
     appTitleText: {
       color: "white",
-      fontSize: RFValue(28),
+      fontSize: RFValue(20),
       fontFamily: "Bubblegum-Sans"
     },
     cardContainer: {
-      flex: 0.93
+      flex: 0.93,
+      paddingBottom:60
     }
   });

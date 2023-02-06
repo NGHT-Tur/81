@@ -1,14 +1,5 @@
 import React, { Component } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  Platform,
-  StatusBar,
-  Image,
-  Dimensions
-} from "react-native";
+import {View,Text,StyleSheet, SafeAreaView,Platform,StatusBar,Image,Dimensions,TouchableOpacity} from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import * as Font from "expo-font";
 import * as SplashScreen from 'expo-splash-screen';
@@ -42,15 +33,17 @@ export default class StoryCard extends Component {
       SplashScreen.hideAsync();
     } else {
      return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container}
+                          onPress={()=>this.props.navigation.navigate("Tela de Histórias", {story:this.props.story})}>
           <SafeAreaView style={styles.droidSafeArea}/>
             <View style={styles.cardContainer}>
                 <Image source={require("../assets/story_image_1.png")}
                        style={{
                         resizeMode:"contain",
                         width: Dimensions.get("window").width-60,
-                        height: 200,
-                        borderRadius: 10
+                        height: 230,
+                        borderRadius: 10,
+                        alignSelf:"center"
                        }}></Image>
               <View style={styles.titleContainer}>
                 <View style={styles.titleTextContainer}>
@@ -86,7 +79,7 @@ export default class StoryCard extends Component {
                   </View>
                 </View>
               </View>
-        </View>
+        </TouchableOpacity>
       );
     }
   }
